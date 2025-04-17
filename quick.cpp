@@ -45,25 +45,22 @@ void Show(const int arr[], size_t size)
 template <typename T>
 void QuickSort(T arr[], int first, int last)
 {
-    T middle = arr[(first + last) / 2];
     int i = first;
     int j = last;
+    T middle = arr[(first + last) / 2];
 
-    do
+    while (i <= j) // 5
     {
-        while (arr[j] > middle) // 2
-            j--;
-        while (arr[i] < middle) // 3
-            i++;
+        while (arr[i] < middle) i++; // 3
+        while (arr[j] > middle) j--; // 2
 
-        if (i <= j)             // 4
+        if (i <= j) // 4
         { 
             std::swap(arr[i], arr[j]);
             i++;
             j--;
         }
-
-    } while (i <= j); // 5
+    } 
 
     if (j > first)
         QuickSort(arr, first, j);
